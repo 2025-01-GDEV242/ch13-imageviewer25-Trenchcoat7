@@ -1,33 +1,40 @@
+import java.awt.Color;
 
 /**
- * Write a description of class GreenChannelFilter here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * An image filter to remove color from an image and put a green channel filter on it.
+ * 
+ * @author Katie Strong
+ * @version 4.21.25
  */
-public class GreenChannelFilter
+public class GreenChannelFilter extends Filter
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
-     * Constructor for objects of class GreenChannelFilter
+     * Constructor for objects of class RedChannelFilter.
+     * @param name The name of the filter.
      */
-    public GreenChannelFilter()
+    public GreenChannelFilter(String name)
     {
-        // initialise instance variables
-        x = 0;
+        super(name);
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Apply this filter to an image.
+     * 
+     * @param  image  The image to be changed by this filter.
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public void apply(OFImage image)
+{
+    int height = image.getHeight();
+    int width = image.getWidth();
+    for(int y = 0; y < height; y++) {
+        for(int x = 0; x < width; x++) {
+            Color pix = image.getPixel(x, y);
+            int green = pix.getGreen(); // range 0–255
+            // Use the green value as intensity for all channels
+            Color greenGray = new Color(green, green, green);
+            image.setPixel(x, y, greenGray);
+        }
     }
+}
+
 }

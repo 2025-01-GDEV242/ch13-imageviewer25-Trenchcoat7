@@ -1,7 +1,7 @@
 import java.awt.Color;
 
 /**
- * An image filter to remove color from an image and put a red channel filter on it.
+  * An image filter that tints the image green.
  * 
  * @author Katie Strong
  * @version 4.21.25

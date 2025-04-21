@@ -1,15 +1,13 @@
+import java.awt.Color;
 
 /**
- * Write a description of class BlueChannelFilter here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * An image filter to remove color from an image and put a blue channel filter on it.
+ * 
+ * @author Katie Strong
+ * @version 4.21.25
  */
 public class BlueChannelFilter extends Filter
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
     /**
      * Constructor for objects of class RedChannelFilter.
      * @param name The name of the filter.
@@ -32,10 +30,11 @@ public class BlueChannelFilter extends Filter
         for(int x = 0; x < width; x++) {
             Color pix = image.getPixel(x, y);
             int blue = pix.getBlue(); // range 0–255
-            // Use the blue value as intensity for all channels
+            // Use the red value as intensity for all channels
             Color blueGray = new Color(blue, blue, blue);
             image.setPixel(x, y, blueGray);
         }
     }
 }
+
 }
